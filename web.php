@@ -21,6 +21,9 @@ Route::get('/', function () {
 
 Route::get('/workers', 'WorkerController@index')->name('workers');
 
+Route::get('/workersForAccountant', 'WorkerController@indexForAccountant')->name('workers');
+
+
 Route::post('/workers/add', 'WorkerController@store');
 
 
