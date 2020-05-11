@@ -32,8 +32,40 @@
     <div class="row justify-content-center">
         <div class="col-md-11">
             <div class="card">
-                <div class="card-header">Сотрудники
-                <div class="card-body">
+                <div class="card-header">Импорт отчета
+
+                          <div class="card-body">
+                              <form action="<?php echo e(route('import')); ?>" method="POST" enctype="multipart/form-data">
+                                <?php echo e(csrf_field()); ?>
+
+
+                                  <!--
+                                      <input type="text" class="form-control mr-sm-2" name="q"
+                                          placeholder="Поиск сотрудника">
+                                        <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Найти</button>
+                                        </span>
+                                   -->
+                                  <div class="input-group">
+                                  <input type="file" name="file" class="form-control mr-sm-2">
+
+                                  <button class="btn btn-outline-success my-2 my-sm-0">Загрузить</button>
+                                  <a class="btn btn-warning my-2 my-sm-0" href="<?php echo e(route('export')); ?>">Скачать</a>
+                                  </div>
+
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+<br><br>
+                  <div class="container">
+                      <div class="row justify-content-center">
+                          <div class="col-md-11">
+                              <div class="card">
+                                  <div class="card-header">Сотрудники
+                                  <div class="card-body">
 
                     <?php if(session('status')): ?>
                         <div class="alert alert-success" role="alert">

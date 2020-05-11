@@ -15,8 +15,13 @@ use App\Exports\VisitsExport;
 use App\Imports\VisitsImport;
 use Maatwebsite\Excel\Facades\Excel;
 
+use App\Exports\VisitsExport;
+use App\Imports\VisitsImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class VisitController extends Controller
 {
+<<<<<<< Updated upstream
   /**
     * @return \Illuminate\Support\Collection
     */
@@ -24,6 +29,36 @@ class VisitController extends Controller
     {
        return view('import');
     }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function export()
+    {
+        return Excel::download(new VisitsExport, 'visits.xlsx');
+    }
+=======
+
+>>>>>>> Stashed changes
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function import()
+    {
+        Excel::import(new VisitsImport,request()->file('file'));
+
+<<<<<<< Updated upstream
+        return back();
+=======
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    // public function importExportView()
+    // {
+    //    return view('import');
+    // }
 
     /**
     * @return \Illuminate\Support\Collection
@@ -40,7 +75,12 @@ class VisitController extends Controller
     {
         Excel::import(new VisitsImport,request()->file('file'));
 
-        return back();
+        $visits = Visit::select('*')
+        ->get();
+
+        return view('workers.visit', ['visits' => $visits]);
+
+>>>>>>> Stashed changes
     }
 }
 // public function index()

@@ -20,23 +20,23 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/actions', 'ActionController@index');
-Route::post('/actions/read', function () {
-
-  if (($handle = fopen ( public_path () . '/audittrail.csv', 'r' )) !== FALSE) {
-  while ( ($data = fgetcsv ( $handle, 15, ',' )) !== FALSE ) {
-    $action= new Action ();
-    $action->date = $data [1];
-    $action->idParalax = $data [3];
-    $action->action = $data [4];
-    $action->save();var_dump(action);die;
-  }
-
-  fclose ( $handle );
-  }
-
-	return redirect('/actions');
-} );
+// Route::get('/actions', 'ActionController@index');
+// Route::post('/actions/read', function () {
+//
+//   if (($handle = fopen ( public_path () . '/audittrail.csv', 'r' )) !== FALSE) {
+//   while ( ($data = fgetcsv ( $handle, 15, ',' )) !== FALSE ) {
+//     $action= new Action ();
+//     $action->date = $data [1];
+//     $action->idParalax = $data [3];
+//     $action->action = $data [4];
+//     $action->save();var_dump(action);die;
+//   }
+//
+//   fclose ( $handle );
+//   }
+//
+// 	return redirect('/actions');
+// } );
 // Route::get('/workers', 'WorkerController@index')->name('workers');
 // Route::get('/workersForAccountant', 'WorkerController@indexForAccountant')->name('workers');
 
@@ -89,9 +89,17 @@ Route::match(['get'], '/workers/addForAccountant', 'WorkerController@createForAc
 Route::delete('/workers/deleteForAccountant/{worker}', 'WorkerController@destroyForAccountant');
 Route::match(['get', 'post'], '/workers/editForAccountant/{worker}', 'WorkerController@editForAccountant');
 Route::match(['get', 'post', 'patch'], '/workers/updateForAccoutant/{worker}', 'WorkerController@updateForAccoutant');
+
+Route::get('export', 'VisitController@export')->name('export');
+Route::post('import', 'VisitController@import')->name('import');
 });
 
 
+<<<<<<< Updated upstream
 Route::get('importView', 'VisitController@importExportView');
 Route::post('import', 'VisitController@import')->name('import');
 Route::get('export', 'VisitController@export')->name('export');
+=======
+// Route::get('importExportView', 'VisitController@importExportView');
+// Route::get('visits/read', 'VisitController@indexVisit')->name('visits');
+>>>>>>> Stashed changes

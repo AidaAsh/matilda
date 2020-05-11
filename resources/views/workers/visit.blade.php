@@ -5,14 +5,23 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
+<<<<<<< Updated upstream
 <body><br>
+=======
+
+<body>
+>>>>>>> Stashed changes
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-11">
                   <form method="post" visit="{{url('visits/read')}}" enctype="multipart/form-data">
   {{csrf_field()}}
 
+<<<<<<< Updated upstream
 </form>            <br> <br>
+=======
+</form>            <br>
+>>>>>>> Stashed changes
                   <div class="card">
                       <div class="card-header">
                 <div class="card-body">
@@ -70,6 +79,12 @@
                           @endforeach
                         </tbody>
                       </table>
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
                     </div>
                     @else
                         No Records
