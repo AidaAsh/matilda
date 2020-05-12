@@ -2,33 +2,6 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-11">
-            <div class="card">
-                <div class="card-header">Импорт отчета
-
-            <!-- Поле выбора excel файла -->
-                    <div class="card-body">
-                        <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="input-group">
-                            <input type="file" name="file" class="form-control mr-sm-2">
-                              <span class="input-group-btn">
-                            <button class="btn btn-outline-success my-2 my-sm-0">Загрузить</button>
-                            </span>
-                            </div>
-                            <!-- кнопка экспорта -->
-                            <!-- <a class="btn btn-warning" href="{{ route('export') }}">Export Visit Data</a> -->
-                        </form>
-                    </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-<br>
-<br>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -143,8 +116,84 @@
                     @else
                         No Records
                     @endif
+
+
+
+
                     <br>
+                    <!-- таблица посещений -->
                     <br>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-11">
+                                      <form method="post" visit="{{url('visits/read')}}" enctype="multipart/form-data">
+                      {{csrf_field()}}
+
+                    </form>            <br>
+                                      <div class="card">
+                                          <div class="card-header">
+                                    <div class="card-body">
+
+                                        @if (session('status'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('status') }}
+                                            </div>
+                                        @endif
+
+                                        @if (count($visits) > 0)
+                                        <div class="panel-body">
+
+
+                                          <table class="table table-striped task-table">
+
+                                            <!-- Заголовок таблицы -->
+                                            <thead>
+                                              <th>время</th>
+                                              <th>id Paralax</th>
+                                              <th>Действие</th>
+                                            </thead>
+
+                                            <!-- Тело таблицы -->
+                                            <tbody>
+                                              @foreach ($visits as $visit)
+                                                <tr>
+                                                  <td class="table-text">
+                                                    <div>{{ $visit->datetime }}</div>
+                                                  </td>
+                                                  <td class="table-text">
+                                                    <div>{{ $visit->idParalax }}</div>
+                                                  </td>
+                                                  <td class="table-text">
+                                                    <div>{{ $visit->action }}</div>
+                                                  </td>
+
+                                                  <td class="table-text">
+                                                    <div>
+                                                      </form>
+                                                    </div>
+                                                  </td>
+                                                </tr>
+                                              @endforeach
+                                            </tbody>
+                                          </table>
+
+
+
+                                        </div>
+                                        @else
+                                            Нет посещений
+                                        @endif
+                                        <br>
+                                        <br>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<br> <br>
 
                     <button class="btn btn-primary" type="button" onclick="window.location='{{ url("workers/addForAccountant") }}'">
                       <i class="fa fa-plus fa-fw"></i> Добавить нового сотрудника
@@ -154,6 +203,10 @@
         </div>
     </div>
 </div>
+
+
+
+
 @endsection
 <script>
     $(".delete").on("submit", function(){

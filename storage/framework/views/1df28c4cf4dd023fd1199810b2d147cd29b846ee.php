@@ -1,32 +1,5 @@
 <?php $__env->startSection('content'); ?>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-11">
-            <div class="card">
-                <div class="card-header">Импорт отчета
-
-            <!-- Поле выбора excel файла -->
-                    <div class="card-body">
-                        <form action="<?php echo e(route('import')); ?>" method="POST" enctype="multipart/form-data">
-                            <?php echo csrf_field(); ?>
-                            <div class="input-group">
-                            <input type="file" name="file" class="form-control mr-sm-2">
-                              <span class="input-group-btn">
-                            <button class="btn btn-outline-success my-2 my-sm-0">Загрузить</button>
-                            </span>
-                            </div>
-                            <!-- кнопка экспорта -->
-                            <!-- <a class="btn btn-warning" href="<?php echo e(route('export')); ?>">Export Visit Data</a> -->
-                        </form>
-                    </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-<br>
-<br>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -146,8 +119,86 @@
                     <?php else: ?>
                         No Records
                     <?php endif; ?>
+
+
+
+
                     <br>
+                    <!-- таблица посещений -->
                     <br>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-11">
+                                      <form method="post" visit="<?php echo e(url('visits/read')); ?>" enctype="multipart/form-data">
+                      <?php echo e(csrf_field()); ?>
+
+
+                    </form>            <br>
+                                      <div class="card">
+                                          <div class="card-header">
+                                    <div class="card-body">
+
+                                        <?php if(session('status')): ?>
+                                            <div class="alert alert-success" role="alert">
+                                                <?php echo e(session('status')); ?>
+
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <?php if(count($visits) > 0): ?>
+                                        <div class="panel-body">
+
+
+                                          <table class="table table-striped task-table">
+
+                                            <!-- Заголовок таблицы -->
+                                            <thead>
+                                              <th>время</th>
+                                              <th>id Paralax</th>
+                                              <th>Действие</th>
+                                            </thead>
+
+                                            <!-- Тело таблицы -->
+                                            <tbody>
+                                              <?php $__currentLoopData = $visits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $visit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <tr>
+                                                  <td class="table-text">
+                                                    <div><?php echo e($visit->datetime); ?></div>
+                                                  </td>
+                                                  <td class="table-text">
+                                                    <div><?php echo e($visit->idParalax); ?></div>
+                                                  </td>
+                                                  <td class="table-text">
+                                                    <div><?php echo e($visit->action); ?></div>
+                                                  </td>
+
+                                                  <td class="table-text">
+                                                    <div>
+                                                      </form>
+                                                    </div>
+                                                  </td>
+                                                </tr>
+                                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </tbody>
+                                          </table>
+
+
+
+                                        </div>
+                                        <?php else: ?>
+                                            Нет посещений
+                                        <?php endif; ?>
+                                        <br>
+                                        <br>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<br> <br>
 
                     <button class="btn btn-primary" type="button" onclick="window.location='<?php echo e(url("workers/addForAccountant")); ?>'">
                       <i class="fa fa-plus fa-fw"></i> Добавить нового сотрудника
@@ -157,6 +208,10 @@
         </div>
     </div>
 </div>
+
+
+
+
 <?php $__env->stopSection(); ?>
 <script>
     $(".delete").on("submit", function(){

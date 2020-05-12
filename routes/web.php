@@ -90,16 +90,16 @@ Route::delete('/workers/deleteForAccountant/{worker}', 'WorkerController@destroy
 Route::match(['get', 'post'], '/workers/editForAccountant/{worker}', 'WorkerController@editForAccountant');
 Route::match(['get', 'post', 'patch'], '/workers/updateForAccoutant/{worker}', 'WorkerController@updateForAccoutant');
 
-Route::get('export', 'VisitController@export')->name('export');
 Route::post('import', 'VisitController@import')->name('import');
 });
 
-
-<<<<<<< Updated upstream
-Route::get('importView', 'VisitController@importExportView');
-Route::post('import', 'VisitController@import')->name('import');
 Route::get('export', 'VisitController@export')->name('export');
-=======
-// Route::get('importExportView', 'VisitController@importExportView');
-// Route::get('visits/read', 'VisitController@indexVisit')->name('visits');
->>>>>>> Stashed changes
+
+// <<<<<<< Updated upstream
+// Route::get('importView', 'VisitController@importExportView');
+// Route::post('import', 'VisitController@import')->name('import');
+// Route::get('export', 'VisitController@export')->name('export');
+// =======
+// // Route::get('importExportView', 'VisitController@importExportView');
+// // Route::get('visits/read', 'VisitController@indexVisit')->name('visits');
+// >>>>>>> Stashed changes

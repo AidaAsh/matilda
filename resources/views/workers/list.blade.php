@@ -108,6 +108,8 @@
         </div>
     </div>
 </div>
+
+
 @endsection
 <script>
     $(".delete").on("submit", function(){

@@ -64,6 +64,9 @@ class WorkerController extends Controller
         ->leftJoin('posts', 'workers.idPost', '=', 'posts.idPost')
         ->get();
 
+
+
+
         return view('workers.listForAccountant', ['workers' => $workers]);
     }
 
@@ -75,7 +78,10 @@ class WorkerController extends Controller
         ->leftJoin('posts', 'workers.idPost', '=', 'posts.idPost')
         ->get();
 
-        return view('workers.list', ['workers' => $workers]);
+        $visits = Visit::where('idParalax','=',$q)
+            ->get();
+
+        return view('workers.list', ['workers' => $workers, 'visits' => $visits]);
     }
 
     public function searchForAccountant(){
@@ -85,7 +91,10 @@ class WorkerController extends Controller
         ->leftJoin('posts', 'workers.idPost', '=', 'posts.idPost')
         ->get();
 
-        return view('workers.listForAccountant', ['workers' => $workers]);
+        $visits = Visit::where('idParalax','=',$q)
+            ->get();
+
+        return view('workers.listForAccountant', ['workers' => $workers, 'visits' => $visits]);
     }
 
     /**
