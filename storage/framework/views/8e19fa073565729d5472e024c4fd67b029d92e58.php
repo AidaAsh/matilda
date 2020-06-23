@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Изменение сотрудника</div>
+                <div class="card-header">Просмотр сотрудника</div>
 
                 <div class="card-body">
                   <?php echo $__env->make('common.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
@@ -14,7 +14,7 @@
                         </div>
                     <?php endif; ?>
 
-                    <form action="<?php echo e(url('workers/update/'.$worker->id)); ?>" method="POST" class="form-horizontal">
+                    <form action="<?php echo e(url('workers/updateForAccoutant/'.$worker->id)); ?>" method="POST" class="form-horizontal">
                       <?php echo e(csrf_field()); ?>
 
                       <?php echo e(method_field('PATCH')); ?>
@@ -75,10 +75,100 @@
                       </div>
                     </form>
                 </div>
+              </div>
             </div>
         </div>
     </div>
-</div>
+
+                <!-- таблица посещений -->
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-11">
+
+                            <br>
+                                  <div class="card">
+                                      <div class="card-header">Таблица посещений</div>
+
+                                <div class="card-body">
+
+                                    <?php if(session('status')): ?>
+                                        <div class="alert alert-success" role="alert">
+                                            <?php echo e(session('status')); ?>
+
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <?php if(count($totals) > 0): ?>
+                                    <div class="panel-body">
+
+
+                                      <table class="table table-striped task-table">
+
+                                        <!-- Заголовок таблицы -->
+                                        <thead>
+                                          <th>начало работы</th>
+                                          <th>конец работы</th>
+                                          <th>отработано за день</th>
+                                          <th>переработано</th>
+                                          <th>недоработано</th>
+                                          <th>дата</th>
+                                        </thead>
+
+                                        <!-- Тело таблицы -->
+                                        <tbody>
+                                          <?php $__currentLoopData = $totals; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $total): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <tr>
+                                              <td class="table-text">
+                                                <div><?php echo e($total->start); ?></div>
+                                              </td>
+                                              <td class="table-text">
+                                                <div><?php echo e($total->finish); ?></div>
+                                              </td>
+                                              <td class="table-text">
+                                                <div><?php echo e($total->worked_h_day); ?></div>
+                                              </td>
+                                              <td class="table-text">
+                                                <div><?php echo e($total->over); ?></div>
+                                              </td>
+                                              <td class="table-text">
+                                                <div><?php echo e($total->under); ?></div>
+                                              </td>
+                                              <td class="table-text">
+                                                <div><?php echo e($total->date); ?></div>
+                                              </td>
+
+                                              <td class="table-text">
+                                                <div>
+                                                  </form>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </tbody>
+                                      </table>
+
+
+
+                                    </div>
+                                    <?php else: ?>
+                                        Нет посещений
+                                    <?php endif; ?>
+                                  
+
+
+
+
+
+                </div>
+
+                </div>
+                </div>
+                </div>
+                </div>
+
+
+
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\UserPC\OSPanel\domains\matilda\resources\views/workers/editForAccountant.blade.php ENDPATH**/ ?>

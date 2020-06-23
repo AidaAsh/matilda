@@ -84,7 +84,7 @@
                                   </form>
                                   <form action="{{ url('workers/edit/'.$worker->id) }}" method="GET">
                                     <button type="submit" class="btn btn-primary btn-sm">
-                                      <i class="fa fa-pencil fa-fw"></i> Изменить
+                                      <i class="fa fa-pencil fa-fw"></i> Просмотр
                                     </button>
                                   </form>
                                 </div>

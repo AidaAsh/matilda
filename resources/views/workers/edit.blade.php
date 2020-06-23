@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Изменение сотрудника</div>
+                <div class="card-header">Просмотр сотрудника</div>
 
                 <div class="card-body">
                   @include('common.errors')

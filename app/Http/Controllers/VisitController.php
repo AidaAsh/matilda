@@ -65,11 +65,5 @@ class VisitController extends Controller
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function destroyVis()
-       {
-          $visits=Visit::where('action','NOT LIKE','Завершение работы','На месте') $visits->delete();
-
-           return redirect('/visits');
-       }
 
 }

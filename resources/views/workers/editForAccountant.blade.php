@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Изменение сотрудника</div>
+                <div class="card-header">Просмотр сотрудника</div>
 
                 <div class="card-body">
                   @include('common.errors')
@@ -74,8 +74,97 @@
                       </div>
                     </form>
                 </div>
+              </div>
             </div>
         </div>
     </div>
-</div>
+
+                <!-- таблица посещений -->
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-11">
+
+                            <br>
+                                  <div class="card">
+                                      <div class="card-header">Таблица посещений</div>
+
+                                <div class="card-body">
+
+                                    @if (session('status'))
+                                        <div class="alert alert-success" role="alert">
+                                            {{ session('status') }}
+                                        </div>
+                                    @endif
+
+                                    @if (count($totals) > 0)
+                                    <div class="panel-body">
+
+
+                                      <table class="table table-striped task-table">
+
+                                        <!-- Заголовок таблицы -->
+                                        <thead>
+                                          <th>начало работы</th>
+                                          <th>конец работы</th>
+                                          <th>отработано за день</th>
+                                          <th>переработано</th>
+                                          <th>недоработано</th>
+                                          <th>дата</th>
+                                        </thead>
+
+                                        <!-- Тело таблицы -->
+                                        <tbody>
+                                          @foreach ($totals as $total)
+                                            <tr>
+                                              <td class="table-text">
+                                                <div>{{ $total->start }}</div>
+                                              </td>
+                                              <td class="table-text">
+                                                <div>{{ $total->finish }}</div>
+                                              </td>
+                                              <td class="table-text">
+                                                <div>{{ $total->worked_h_day }}</div>
+                                              </td>
+                                              <td class="table-text">
+                                                <div>{{ $total->over }}</div>
+                                              </td>
+                                              <td class="table-text">
+                                                <div>{{ $total->under }}</div>
+                                              </td>
+                                              <td class="table-text">
+                                                <div>{{ $total->date }}</div>
+                                              </td>
+
+                                              <td class="table-text">
+                                                <div>
+                                                  </form>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                          @endforeach
+                                        </tbody>
+                                      </table>
+
+
+
+                                    </div>
+                                    @else
+                                        Нет посещений
+                                    @endif
+                                  
+
+
+
+
+
+                </div>
+
+                </div>
+                </div>
+                </div>
+                </div>
+
+
+
+
 @endsection

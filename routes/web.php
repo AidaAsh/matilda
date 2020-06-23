@@ -72,8 +72,8 @@ Route::match(['get'], '/workers/addForAccountant', 'WorkerController@createForAc
 Route::delete('/workers/deleteForAccountant/{worker}', 'WorkerController@destroyForAccountant');
 Route::match(['get', 'post'], '/workers/editForAccountant/{worker}', 'WorkerController@editForAccountant');
 Route::match(['get', 'post', 'patch'], '/workers/updateForAccoutant/{worker}', 'WorkerController@updateForAccoutant');
-});
 
+});
 
 Route::get('importExportView', 'VisitController@importExportView');
 Route::post('import', 'VisitController@import')->name('import');
