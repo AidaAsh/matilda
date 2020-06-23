@@ -42,4 +42,34 @@ class VisitController extends Controller
 
       return redirect('/visits');
     }
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function identical()
+    {
+
+
+      return redirect('/visits');
+    }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function excess()
+    {
+
+
+      return redirect('/visits');
+    }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function destroyVis()
+       {
+          $visits=Visit::where('action','NOT LIKE','Завершение работы','На месте') $visits->delete();
+
+           return redirect('/visits');
+       }
+
 }
