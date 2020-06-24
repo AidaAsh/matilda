@@ -108,6 +108,34 @@
         </div>
     </div>
 </div>
+
+
+<!-- Отчеты -->
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-11">
+          <div class="card">
+              <div class="card-header">Oтчеты
+              <div class="card-body">
+
+                  @if (session('status'))
+                      <div class="alert alert-success" role="alert">
+                          {{ session('status') }}
+                      </div>
+                  @endif
+
+
+
+        <button class="btn btn-primary" type="button" onclick="window.location='{{ url("workers/viewReports") }}'">
+              <i class="fa fa-plus fa-fw"></i> Просмотреть
+        </button>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
 @endsection
 <script>
     $(".delete").on("submit", function(){

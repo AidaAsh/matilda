@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">Просмотр сотрудника</div>
 
@@ -83,7 +83,7 @@
   <!-- итоги за месяц -->
   <div class="container">
       <div class="row justify-content-center">
-          <div class="col-md-11">
+          <div class="col-md-7">
 
               <br>
                     <div class="card">
@@ -108,7 +108,7 @@
                             <th>год</th>
                             <th>месяц</th>
                             <th>отработано за месяц</th>
-                            <th>начислено</th>
+                      
 
 
                           </thead>
@@ -126,9 +126,7 @@
                                 <td class="table-text">
                                   <div>{{ $report->worked_h_month }}</div>
                                 </td>
-                                <td class="table-text">
-                                  <div>{{ $report->total_salary }}</div>
-                                </td>
+
 
 
 
@@ -146,7 +144,7 @@
 
                       </div>
                       @else
-                          Нет посещений
+                          Нет итогов
                       @endif
 
 
@@ -161,7 +159,7 @@
                 <!-- таблица посещений -->
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-md-11">
+                        <div class="col-md-9">
 
                             <br>
                                   <div class="card">
@@ -186,9 +184,9 @@
                                           <th>дата</th>
                                           <th>начало работы</th>
                                           <th>конец работы</th>
-                                          <th>отработано за день</th>
                                           <th>переработано</th>
                                           <th>недоработано</th>
+                                          <th>отработано за день</th>
 
                                         </thead>
 
@@ -206,13 +204,13 @@
                                                 <div>{{ $total->finish }}</div>
                                               </td>
                                               <td class="table-text">
-                                                <div>{{ $total->worked_h_day }}</div>
-                                              </td>
-                                              <td class="table-text">
                                                 <div>{{ $total->over }}</div>
                                               </td>
                                               <td class="table-text">
                                                 <div>{{ $total->under }}</div>
+                                              </td>
+                                              <td class="table-text">
+                                                <div>{{ $total->worked_h_day }}</div>
                                               </td>
 
 

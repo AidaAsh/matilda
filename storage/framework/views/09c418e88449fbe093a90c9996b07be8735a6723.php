@@ -24,6 +24,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
+
+            
+
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
                     <?php echo e(config('app.name', 'matilda')); ?>
 
@@ -38,10 +41,13 @@
 
                     </ul>
 
-                <!-- поле поиска было здесь -->
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+
+
                         <!-- Authentication Links -->
                         <?php if(auth()->guard()->guest()): ?>
                             <li class="nav-item">

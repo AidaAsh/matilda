@@ -8,6 +8,8 @@
 
             <!-- Поле выбора excel файла -->
                     <div class="card-body">
+
+
                         <form action="<?php echo e(route('import')); ?>" method="POST" enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <div class="input-group">
@@ -64,7 +66,6 @@
                         <thead>
                           <th>id Paralax</th>
                           <th>Имя</th>
-
                           <th>Должность</th>
                           <th>Офис</th>
                         </thead>
@@ -127,32 +128,9 @@
 </div>
 <br>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-11">
-            <div class="card">
-                <div class="card-header">Oтчеты
-                <div class="card-body">
 
-                    <?php if(session('status')): ?>
-                        <div class="alert alert-success" role="alert">
-                            <?php echo e(session('status')); ?>
+  <!-- Отчеты -->
 
-                        </div>
-                    <?php endif; ?>
-
-
-
-          <button class="btn btn-primary" type="button" onclick="window.location='<?php echo e(url("workers/viewReportsForAccountant")); ?>'">
-                <i class="fa fa-plus fa-fw"></i> Просмотреть 
-          </button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 <?php $__env->stopSection(); ?>
 <script>
     $(".delete").on("submit", function(){

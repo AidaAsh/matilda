@@ -52,23 +52,41 @@ class WorkerController extends Controller
         return view('workers.list', ['workers' => $workers]);
     }
 
+    public function indexForAccountant()
+       {
+           $workers = Worker::select('*')
+           ->leftJoin('offices', 'workers.idOffice', '=', 'offices.idOffice')
+           ->leftJoin('posts', 'workers.idPost', '=', 'posts.idPost')
+           ->get();
+
+           return view('workers.listForAccountant', ['workers' => $workers]);
+       }
+
+    public function indexVisits()
+        {
+            $visits = Visit::select('*')
+            ->get();
+            \Session::flash('flash_message','файл успешно импортирован');
+              return view('workers.visits');
+        }
+
+        public function indexReports()
+        {
+            $reports = Report::select('*')
+            ->get();
+
+            return view('workers.reports', ['reports' => $reports]);
+        }
+
     public function indexReportsForAccountant()
     {
         $reports = Report::select('*')
         ->get();
 
-        return view('workers.reports', ['reports' => $reports]);
+        return view('workers.reportsForAccountant', ['reports' => $reports]);
     }
 
- public function indexForAccountant()
-    {
-        $workers = Worker::select('*')
-        ->leftJoin('offices', 'workers.idOffice', '=', 'offices.idOffice')
-        ->leftJoin('posts', 'workers.idPost', '=', 'posts.idPost')
-        ->get();
 
-        return view('workers.listForAccountant', ['workers' => $workers]);
-    }
 
 
   public function search(){

@@ -59,6 +59,9 @@ Route::match(['get'], '/workers/add', 'WorkerController@create');
 Route::match(['get', 'post'], '/workers/edit/{worker}', 'WorkerController@edit');
 Route::delete('/workers/delete/{worker}', 'WorkerController@destroy');
 Route::match(['get', 'post', 'patch'], '/workers/update/{worker}', 'WorkerController@update');
+
+Route::match(['get'], '/workers/viewReports', 'WorkerController@indexReports')->name('reports');
+
 });
 
 
