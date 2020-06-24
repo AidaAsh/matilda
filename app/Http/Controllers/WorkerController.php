@@ -7,6 +7,7 @@ use App\Post;
 use App\Office;
 use App\Visit;
 use App\Total;
+use App\Report;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -50,7 +51,14 @@ class WorkerController extends Controller
 
         return view('workers.list', ['workers' => $workers]);
     }
-    
+
+    public function indexReportsForAccountant()
+    {
+        $reports = Report::select('*')
+        ->get();
+
+        return view('workers.reports', ['reports' => $reports]);
+    }
 
  public function indexForAccountant()
     {
@@ -179,10 +187,12 @@ class WorkerController extends Controller
        $offices = Office::select('*')->get();
        $posts = Post::select('*')->get();
        $totals = Total::where('idParalax','=',$worker['idParalax'])->get();
+       $reports = Report::where('idParalax','=',$worker['idParalax'])->get();
 
 
 
-        return view('workers.editForAccountant', ['worker' => $worker,'posts' => $posts,'offices' => $offices,'totals'=>$totals]);
+
+        return view('workers.editForAccountant', ['worker' => $worker,'posts' => $posts,'offices' => $offices,'totals'=>$totals,'reports'=>$reports]);
     }
 
 

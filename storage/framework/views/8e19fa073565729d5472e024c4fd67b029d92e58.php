@@ -80,6 +80,86 @@
         </div>
     </div>
 
+
+  <!-- итоги за месяц -->
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-md-11">
+
+              <br>
+                    <div class="card">
+                        <div class="card-header">Итоги за месяц</div>
+
+                  <div class="card-body">
+
+                      <?php if(session('status')): ?>
+                          <div class="alert alert-success" role="alert">
+                              <?php echo e(session('status')); ?>
+
+                          </div>
+                      <?php endif; ?>
+
+                      <?php if(count($reports) > 0): ?>
+                      <div class="panel-body">
+
+
+                        <table class="table table-striped task-table">
+
+                          <!-- Заголовок таблицы -->
+                          <thead>
+                            <th>год</th>
+                            <th>месяц</th>
+                            <th>отработано за месяц</th>
+                            <th>начислено</th>
+
+
+                          </thead>
+
+                          <!-- Тело таблицы -->
+                          <tbody>
+                            <?php $__currentLoopData = $reports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $report): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                              <tr>
+                                <td class="table-text">
+                                  <div><?php echo e($report->year); ?></div>
+                                </td>
+                                <td class="table-text">
+                                  <div><?php echo e($report->month); ?></div>
+                                </td>
+                                <td class="table-text">
+                                  <div><?php echo e($report->worked_h_month); ?></div>
+                                </td>
+                                <td class="table-text">
+                                  <div><?php echo e($report->total_salary); ?></div>
+                                </td>
+
+
+
+                                <td class="table-text">
+                                  <div>
+                                    </form>
+                                  </div>
+                                </td>
+                              </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                          </tbody>
+                        </table>
+
+
+
+                      </div>
+                      <?php else: ?>
+                          Нет посещений
+                      <?php endif; ?>
+
+
+  </div>
+
+  </div>
+  </div>
+  </div>
+  </div>
+
+
                 <!-- таблица посещений -->
                 <div class="container">
                     <div class="row justify-content-center">
@@ -106,18 +186,22 @@
 
                                         <!-- Заголовок таблицы -->
                                         <thead>
+                                          <th>дата</th>
                                           <th>начало работы</th>
                                           <th>конец работы</th>
                                           <th>отработано за день</th>
                                           <th>переработано</th>
                                           <th>недоработано</th>
-                                          <th>дата</th>
+
                                         </thead>
 
                                         <!-- Тело таблицы -->
                                         <tbody>
                                           <?php $__currentLoopData = $totals; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $total): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tr>
+                                              <td class="table-text">
+                                                <div><?php echo e($total->date); ?></div>
+                                              </td>
                                               <td class="table-text">
                                                 <div><?php echo e($total->start); ?></div>
                                               </td>
@@ -133,9 +217,7 @@
                                               <td class="table-text">
                                                 <div><?php echo e($total->under); ?></div>
                                               </td>
-                                              <td class="table-text">
-                                                <div><?php echo e($total->date); ?></div>
-                                              </td>
+
 
                                               <td class="table-text">
                                                 <div>
@@ -153,10 +235,6 @@
                                     <?php else: ?>
                                         Нет посещений
                                     <?php endif; ?>
-                                  
-
-
-
 
 
                 </div>

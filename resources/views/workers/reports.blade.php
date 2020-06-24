@@ -9,12 +9,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-11">
-                  <form method="post" visit="{{url('visits/read')}}" enctype="multipart/form-data">
-  {{csrf_field()}}
-
-</form>            <br> <br>
+          <br> <br>
                   <div class="card">
-                      <div class="card-header">
+                      <div class="card-header">Отчет за месяц</div>
                 <div class="card-body">
 
                     @if (session('status'))
@@ -23,18 +20,9 @@
                         </div>
                     @endif
 
-                    @if (count($visits) > 0)
+                    @if (count($reports) > 0)
                     <div class="panel-body">
 
-
-                <!-- Поле поиска -->
-          <!--   <form visit="/search" method="POST" role="search">
-                  {{ csrf_field() }}
-                <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="поиск" aria-label="поиск">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit"></button>
-                </form>
-             </form> -->
 
 
 
@@ -42,23 +30,44 @@
 
                         <!-- Заголовок таблицы -->
                         <thead>
-                          <th>время</th>
                           <th>id Paralax</th>
-                          <th>Действие</th>
+                          <th>имя</th>
+                          <th>год</th>
+                          <th>месяц</th>
+                          <th>количество рабочих часов</th>
+                          <th>отработано</th>
+                          <th>зарплата</th>
+                          <th>начислено сом</th>
+
                         </thead>
 
                         <!-- Тело таблицы -->
                         <tbody>
-                          @foreach ($visits as $visit)
+                          @foreach ($reports as $report)
                             <tr>
                               <td class="table-text">
-                                <div>{{ $visit->datetime }}</div>
+                                <div>{{ $report->idParalax }}</div>
                               </td>
                               <td class="table-text">
-                                <div>{{ $visit->idParalax }}</div>
+                                <div>{{ $report->name }}</div>
                               </td>
                               <td class="table-text">
-                                <div>{{ $visit->action }}</div>
+                                <div>{{ $report->year}}</div>
+                              </td>
+                              <td class="table-text">
+                                <div>{{ $report->month}}</div>
+                              </td>
+                              <td class="table-text">
+                                <div>{{ $report->h_month}}</div>
+                              </td>
+                              <td class="table-text">
+                                <div>{{ $report->worked_h_month}}</div>
+                              </td>
+                              <td class="table-text">
+                                <div>{{ $report->fixed_salary}}</div>
+                              </td>
+                              <td class="table-text">
+                                <div>{{ $report->total_salary}}</div>
                               </td>
 
                               <td class="table-text">
@@ -74,16 +83,18 @@
                     @else
                         No Records
                     @endif
-                    <br>
-                    <br>
-
-
                 </div>
-            </div>
         </div>
-    </div>
-</div>
 
+<!-- кнопка скачать -->
+        <a class="btn btn-warning my-2 my-sm-0" href="{{ route('export') }}">Скачать отчет</a>
+        <br>
+        <br>
+        <br>
+
+    </div>
+  </div>
+</div>
 <script>
     $(".delete").on("submit", function(){
         return confirm("Вы уверены?");

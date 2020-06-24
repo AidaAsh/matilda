@@ -73,6 +73,8 @@ Route::delete('/workers/deleteForAccountant/{worker}', 'WorkerController@destroy
 Route::match(['get', 'post'], '/workers/editForAccountant/{worker}', 'WorkerController@editForAccountant');
 Route::match(['get', 'post', 'patch'], '/workers/updateForAccoutant/{worker}', 'WorkerController@updateForAccoutant');
 
+Route::match(['get'], '/workers/viewReportsForAccountant', 'WorkerController@indexReportsForAccountant')->name('reports');
+
 });
 
 Route::get('importExportView', 'VisitController@importExportView');

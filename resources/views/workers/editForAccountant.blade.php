@@ -79,6 +79,85 @@
         </div>
     </div>
 
+
+  <!-- итоги за месяц -->
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-md-11">
+
+              <br>
+                    <div class="card">
+                        <div class="card-header">Итоги за месяц</div>
+
+                  <div class="card-body">
+
+                      @if (session('status'))
+                          <div class="alert alert-success" role="alert">
+                              {{ session('status') }}
+                          </div>
+                      @endif
+
+                      @if (count($reports) > 0)
+                      <div class="panel-body">
+
+
+                        <table class="table table-striped task-table">
+
+                          <!-- Заголовок таблицы -->
+                          <thead>
+                            <th>год</th>
+                            <th>месяц</th>
+                            <th>отработано за месяц</th>
+                            <th>начислено</th>
+
+
+                          </thead>
+
+                          <!-- Тело таблицы -->
+                          <tbody>
+                            @foreach ($reports as $report)
+                              <tr>
+                                <td class="table-text">
+                                  <div>{{ $report->year }}</div>
+                                </td>
+                                <td class="table-text">
+                                  <div>{{ $report->month }}</div>
+                                </td>
+                                <td class="table-text">
+                                  <div>{{ $report->worked_h_month }}</div>
+                                </td>
+                                <td class="table-text">
+                                  <div>{{ $report->total_salary }}</div>
+                                </td>
+
+
+
+                                <td class="table-text">
+                                  <div>
+                                    </form>
+                                  </div>
+                                </td>
+                              </tr>
+                            @endforeach
+                          </tbody>
+                        </table>
+
+
+
+                      </div>
+                      @else
+                          Нет посещений
+                      @endif
+
+
+  </div>
+
+  </div>
+  </div>
+  </div>
+  </div>
+
+
                 <!-- таблица посещений -->
                 <div class="container">
                     <div class="row justify-content-center">
@@ -104,18 +183,22 @@
 
                                         <!-- Заголовок таблицы -->
                                         <thead>
+                                          <th>дата</th>
                                           <th>начало работы</th>
                                           <th>конец работы</th>
                                           <th>отработано за день</th>
                                           <th>переработано</th>
                                           <th>недоработано</th>
-                                          <th>дата</th>
+
                                         </thead>
 
                                         <!-- Тело таблицы -->
                                         <tbody>
                                           @foreach ($totals as $total)
                                             <tr>
+                                              <td class="table-text">
+                                                <div>{{ $total->date }}</div>
+                                              </td>
                                               <td class="table-text">
                                                 <div>{{ $total->start }}</div>
                                               </td>
@@ -131,9 +214,7 @@
                                               <td class="table-text">
                                                 <div>{{ $total->under }}</div>
                                               </td>
-                                              <td class="table-text">
-                                                <div>{{ $total->date }}</div>
-                                              </td>
+
 
                                               <td class="table-text">
                                                 <div>
@@ -151,10 +232,6 @@
                                     @else
                                         Нет посещений
                                     @endif
-                                  
-
-
-
 
 
                 </div>
