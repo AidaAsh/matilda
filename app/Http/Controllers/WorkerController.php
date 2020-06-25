@@ -28,6 +28,22 @@ class WorkerController extends Controller
     }
 
 
+
+    public function sortDBForAccountant()
+    {
+      DB::select("CALL insert_to_totals()");
+      DB::select("CALL insert_to_reports()");
+      DB::select("CALL update_reports()");
+
+
+      $workers = Worker::select('*')
+      ->leftJoin('offices', 'workers.idOffice', '=', 'offices.idOffice')
+      ->leftJoin('posts', 'workers.idPost', '=', 'posts.idPost')
+      ->get();
+
+        return view('workers.listForAccountant', ['workers' => $workers]);
+    }
+
 // public function findWorker(Worker $worker , $item)
 //     {
 //  $workers = $worker->where('idParalax', '$item')
@@ -194,9 +210,11 @@ class WorkerController extends Controller
     {
        $offices = Office::select('*')->get();
         $posts = Post::select('*')->get();
+        $totals = Total::where('idParalax','=',$worker['idParalax'])->get();
+        $reports = Report::where('idParalax','=',$worker['idParalax'])->get();
 
 
-        return view('workers.edit', ['worker' => $worker,'posts' => $posts],['offices' => $offices]);
+        return view('workers.edit', ['worker' => $worker,'posts' => $posts,'offices' => $offices,'totals'=>$totals,'reports'=>$reports]);
     }
 
 

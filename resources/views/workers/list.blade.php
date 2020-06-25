@@ -97,8 +97,8 @@
                     @else
                         No Records
                     @endif
-                    <br>
-                    <br>
+                    
+
 
                     <button class="btn btn-primary" type="button" onclick="window.location='{{ url("workers/add") }}'">
                       <i class="fa fa-plus fa-fw"></i> Добавить нового сотрудника
@@ -109,7 +109,7 @@
     </div>
 </div>
 
-
+<br>
 <!-- Отчеты -->
 <div class="container">
   <div class="row justify-content-center">

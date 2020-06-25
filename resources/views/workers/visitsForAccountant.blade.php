@@ -8,10 +8,15 @@
 <br>
 <br>
 <br>
-                <div class="card-header">Файл загружен</div>
+                <div class="card-header">Файл загружен
 
-                <div class="card-body">
 
+
+                  </div>
+
+
+
+                    <div class="card-body">
                 </div>
 
         </div>

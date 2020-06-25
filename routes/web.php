@@ -59,8 +59,8 @@ Route::match(['get'], '/workers/add', 'WorkerController@create');
 Route::match(['get', 'post'], '/workers/edit/{worker}', 'WorkerController@edit');
 Route::delete('/workers/delete/{worker}', 'WorkerController@destroy');
 Route::match(['get', 'post', 'patch'], '/workers/update/{worker}', 'WorkerController@update');
-
 Route::match(['get'], '/workers/viewReports', 'WorkerController@indexReports')->name('reports');
+
 
 });
 
@@ -77,9 +77,13 @@ Route::match(['get', 'post'], '/workers/editForAccountant/{worker}', 'WorkerCont
 Route::match(['get', 'post', 'patch'], '/workers/updateForAccoutant/{worker}', 'WorkerController@updateForAccoutant');
 
 Route::match(['get'], '/workers/viewReportsForAccountant', 'WorkerController@indexReportsForAccountant')->name('reports');
+Route::match(['get'], '/workers/sortDBForAccountant', 'WorkerController@sortDBForAccountant');
+Route::post('import', 'VisitController@import')->name('import');
+
 
 });
 
+
 Route::get('importExportView', 'VisitController@importExportView');
-Route::post('import', 'VisitController@import')->name('import');
+
 Route::get('export', 'VisitController@export')->name('export');

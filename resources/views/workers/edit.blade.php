@@ -88,7 +88,7 @@
 <!-- итоги за месяц -->
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-7">
+        <div class="col-md-11">
 
             <br>
                   <div class="card">
@@ -112,6 +112,7 @@
                         <thead>
                           <th>год</th>
                           <th>месяц</th>
+                            <th>количество рабочих часов в месяце</th>
                           <th>отработано за месяц</th>
                           <th>начислено сом</th>
 
@@ -127,6 +128,9 @@
                               </td>
                               <td class="table-text">
                                 <div>{{ $report->month }}</div>
+                              </td>
+                              <td class="table-text">
+                                <div>{{ $report->h_month }}</div>
                               </td>
                               <td class="table-text">
                                 <div>{{ $report->worked_h_month }}</div>

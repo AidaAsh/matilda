@@ -39,12 +39,15 @@ class VisitController extends Controller
     */
     public function import()
     {
+
+
         Excel::import(new VisitsImport,request()->file('file'));
         DB::select("CALL insert_to_totals()");
         DB::select("CALL insert_to_reports()");
         DB::select("CALL update_reports()");
-      return redirect('/visits');
+      return view('workers.visitsForAccountant');
     }
+
     /**
     * @return \Illuminate\Support\Collection
     */
